@@ -1,0 +1,82 @@
+<style>
+.ticketdetail .card .item {
+    background-color: #FFFFFF !important;
+    border: none;
+}
+
+.ion-card {
+    fill: #ff0000;
+}
+
+@media only screen and (max-width: 480px) {
+    #imgdiv {
+        width: 100%;
+    }
+    #descriptiondiv {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    #imgdiv {
+        width: 25%;
+    }
+    #descriptiondiv {
+        width: 75%;
+    }
+}
+</style>
+<ion-view title="{{ isMobile ? '' : 'APPLICATION.DESTINATION.TICKETMASTER' | translate}}" class="dark ticketdetail">
+    <ion-content class="has-header">
+        <div class="grid">
+            <div class="separator2 hidden-overflow" id="imgdiv" style="float:left;">
+                <img ng-if="ticketmasterTicketCtrl.currentEvent.images[0].url === undefined" style="width:100%; height:100%; object-fit:cover;" src="assets/images/destination/ticketmaster/img/notfound.jpeg" />
+                <img ng-if="ticketmasterTicketCtrl.currentEvent.images[0].url !== undefined" style="width:100%; height:100%; object-fit:cover;" ng-src="{{ticketmasterTicketCtrl.currentEvent.images[0].url}}" />
+            </div>
+            <div class="separator3" id="descriptiondiv" style="overflow: hidden;">
+                <h4 class="light">{{ticketmasterTicketCtrl.currentEvent.name}}</h4>
+                <div ng-bind-html="ticketmasterTicketCtrl.descriptionHtml" class="light" style="padding-right:24px;">
+                </div>
+                <h5 class="light">{{ticketmasterTicketCtrl.currentEvent.venue.name}}</h5>
+                <h5 class="light">{{dateFormat(ticketmasterTicketCtrl.currentEvent.localeventdate)}}</h5>
+            </div>
+        </div>
+        <div style="clear:left;">
+            <div class="card" ng-repeat="price in ticketmasterTicketCtrl.prices">
+                <div class="item item-text-wrap">
+                    <ion-header-bar align-title="left" class="ticket-section aligned-center">
+                        <h2 style="  margin: 0 auto; color: white; font-size:18px; font-weight:bold;">{{price.name}}</h2>
+                    </ion-header-bar>
+                    <!-- NUMBER OF ENTRANCES -->
+                    <div class="list" style="margin-top:44px;">
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                Number
+                            </div>
+                            <select>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </label>
+                    </div>
+                    <!-- PRICE -->
+                    <div class="list">
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                Price
+                            </div>
+                            <select>
+                                <option ng-repeat="pricelevel in price.price_levels">{{ticketmasterTicketCtrl.getCurrencyString(ticketmasterTicketCtrl.currentEvent)}} {{pricelevel.face_value}}</option>
+                            </select>
+                        </label>
+                    </div>
+                    <!-- BUY BUTTON -->
+                    <button class="button button-positive" style="width:100%;" ng-click="ticketmasterTicketCtrl.purchase()"><i class="ion-card" style="ion-card: fill #ff0000;"></i> <strong>Purchase</strong></button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

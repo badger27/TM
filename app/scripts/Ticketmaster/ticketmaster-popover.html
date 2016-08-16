@@ -1,0 +1,14 @@
+<ion-popover-view>
+    <ion-header-bar>
+        <h1 class="title" style="color:black;">{{popoverTitle}}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+            <ion-item collection-repeat="item in dataToUse" item-height="52" item-width="'100%'" ng-click="callbackToUse(item)">
+                <p ng-if="popoverTitle ==='Choose city'">
+                    {{item.name}}
+                </p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-popover-view>

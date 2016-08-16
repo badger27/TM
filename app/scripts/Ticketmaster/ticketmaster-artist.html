@@ -1,0 +1,40 @@
+<ion-view title="{{ isMobile ? '' : 'APPLICATION.DESTINATION.TICKETMASTER' | translate}}" class="dark">
+    <ion-content class="has-header">
+        <div class="grid">
+            <div class="separator2 hidden-overflow" id="imgdiv" style="float:left;">
+                <img ng-if="ticketmasterArtistCtrl.currentEvent.images[0].url === undefined" style="width:100%; height:100%; object-fit:cover;" src="../../../assets/images/destination/ticketmaster/img/notfound.jpeg" />
+                <img ng-if="ticketmasterArtistCtrl.currentEvent.images[0].url !== undefined" style="width:100%; height:100%; object-fit:cover;" ng-src="{{ticketmasterArtistCtrl.currentEvent.images[0].url}}" />
+            </div>
+            <div class="separator3" id="descriptiondiv" style="overflow: hidden;">
+                <h4 class="light">{{ticketmasterArtistCtrl.currentEvent.name}}</h4>
+                <h5 class="light">{{dateFormat(ticketmasterArtistCtrl.currentEvent.localeventdate)}}</h5>
+            </div>
+        </div>
+        <div style="clear:left;">
+            <div class="card" style="background:white;" ng-repeat="attraction in ticketmasterArtistCtrl.currentEvent.attractions">
+                <div class="item item-text-wrap" style="background:white !important;">
+                    <h3 style="color:black">{{attraction.name}}</h3>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+<style type="text/css">
+@media only screen and (max-width: 480px) {
+    #imgdiv {
+        width: 100%;
+    }
+    #descriptiondiv {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    #imgdiv {
+        width: 25%;
+    }
+    #descriptiondiv {
+        width: 75%;
+    }
+}
+</style>

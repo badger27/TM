@@ -1,0 +1,52 @@
+<ion-view title="{{ isMobile ? '' : 'APPLICATION.DESTINATION.TICKETMASTER' | translate}}" class="dark">
+    <ion-content class="has-header">
+        <div class="grid">
+            <div class="separator2" id="imgdiv" style="float:left;">
+                <img ng-if="ticketmasterDetailCtrl.currentEvent.images[0].url === undefined" style="width:100%; height:100%; object-fit:cover;" src="assets/images/destination/ticketmaster/img/notfound.jpeg" />
+                <img ng-if="ticketmasterDetailCtrl.currentEvent.images[0].url !== undefined" style="width:100%; height:100%; object-fit:cover;" ng-src="{{ticketmasterDetailCtrl.currentEvent.images[0].url}}" />
+            </div>
+            <div class="separator3" id="descriptiondiv" style="overflow: hidden;">
+                <h4 class="light">{{ticketmasterDetailCtrl.currentEvent.name}}</h4>
+                <h5 class="light">{{ticketmasterDetailCtrl.currentEvent.venue.name}}</h5>
+                <h5 class="light">{{dateFormat(ticketmasterDetailCtrl.currentEvent.localeventdate)}}</h5>
+            </div>
+        </div>
+        <ion-list>
+            <ion-item ui-sref="destination.ticketmaster.detail.ticket({currentEvent: ticketmasterDetailCtrl.currentEvent})" ng-click="ticketmasterDetailCtrl.findTicket()">
+                <img src="assets/images/destination/ticketmaster/img/ticket.png" style="width:20px; height:20px; margin-right: 15px;" />FIND TICKETS
+                <i class="ion-chevron-right" style="float:right;"></i>
+            </ion-item>
+            <ion-item ui-sref="destination.ticketmaster.detail.artist({currentEvent: ticketmasterDetailCtrl.currentEvent})">
+                <img src="assets/images/destination/ticketmaster/img/artist.png" style="width:20px; height:20px; margin-right: 15px;" />ABOUT THE ARTIST
+                <i class="ion-chevron-right" style="float:right;"></i>
+            </ion-item>
+            <ion-item ui-sref="destination.ticketmaster.detail.venue({currentEvent: ticketmasterDetailCtrl.currentEvent})">
+                <img src="assets/images/destination/ticketmaster/img/location.png" style="width:20px; height:20px; margin-right: 15px;" />ABOUT THE VENUE
+                <i class="ion-chevron-right" style="float:right;"></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
+<style type="text/css">
+ion-list .list {
+    clear: left;
+}
+
+@media only screen and (max-width: 480px) {
+    #imgdiv {
+        width: 100%;
+    }
+    #descriptiondiv {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    #imgdiv {
+        width: 25%;
+    }
+    #descriptiondiv {
+        width: 75%;
+    }
+}
+</style>
