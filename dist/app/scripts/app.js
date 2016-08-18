@@ -10,11 +10,9 @@
  */
 
 
-var tm = angular.module('IonicGulpSeed', ['ionic', 'ngCordova', 'ngResource', 'ngSanitize','firebase']);
+angular.module('IonicGulpSeed', ['ionic', 'ngCordova', 'ngResource', 'ngSanitize', 'firebase'])
 
-        tm.constant('FIREBASE_URL', 'https://ticketmaster-5f33e.firebaseio.com') 
-        
-        .run(function($ionicPlatform) {
+    .run(function($ionicPlatform) {
 
         $ionicPlatform.ready(function() {
             // save to use plugins here
@@ -22,7 +20,9 @@ var tm = angular.module('IonicGulpSeed', ['ionic', 'ngCordova', 'ngResource', 'n
 
         // add possible global event handlers here
 
-    }).config(function($httpProvider, $stateProvider, $urlRouterProvider ) {
+    })
+
+    .config(function($httpProvider, $stateProvider, $urlRouterProvider) {
         // register $http interceptors, if any. e.g.
         // $httpProvider.interceptors.push('interceptor-name');
 
@@ -58,7 +58,6 @@ var tm = angular.module('IonicGulpSeed', ['ionic', 'ngCordova', 'ngResource', 'n
 
         // redirects to default route for undefined routes
         $urlRouterProvider.otherwise('/app/home');
-        
-    })
+    });
 
 

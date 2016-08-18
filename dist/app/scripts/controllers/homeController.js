@@ -11,8 +11,6 @@ angular.module('IonicGulpSeed')
 
         $scope.myHTML = null;
 
-         $scope.test = "test";
-
         $scope.fetchRandomText = function() {
             ExampleService.doSomethingAsync()
                 .then(ExampleService.fetchSomethingFromServer)

@@ -5,6 +5,8 @@
     </ion-header-bar>
 
     <ion-content>
+        {{test}}
+        <h1>TicketMaster </h1>
         <ion-refresher
             pulling-text="Pull to refresh..."
             on-refresh="fetchRandomText()">
@@ -12,8 +14,8 @@
         <div class="loader" ng-if="!myHTML">
             <ion-spinner></ion-spinner>
         </div>
-        <div class="content" ng-bind-html="myHTML">
-        </div>
+<!--        <div class="content" ng-bind-html="myHTML">
+        </div>-->
     </ion-content>
 
 </ion-view>

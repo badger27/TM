@@ -22,7 +22,6 @@ var KarmaServer = require('karma').Server;
 var spawn = require('child_process').spawn;
 var Promise = require('bluebird');
 var debug = require('gulp-debug');
-var Firebase = require("firebase");
 
 // this is the express server which 
 // will be initiated when gulp serve
@@ -107,8 +106,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('debug', function () {
-    return gulp.src('app/scripts/**/*.js')
-  
+    return gulp.src('**/*.js')
         .pipe(debug({title: 'unicorn:'}))
         .pipe(gulp.dest('dist'));
 });
@@ -244,7 +242,7 @@ gulp.task('index', ['jsHint', 'scripts'], function() {
   // in development mode, it's better to add each file seperately.
   // it makes debugging easier.
   var _getAllScriptSources = function() {
-    var scriptStream = gulp.src(['scripts/app.js', 'scripts/**/*.js', 'bower_component/*.js'], { cwd: targetDir });
+    var scriptStream = gulp.src(['scripts/app.js', 'scripts/**/*.js'], { cwd: targetDir });
     return streamqueue({ objectMode: true }, scriptStream);
   };
 
@@ -257,7 +255,6 @@ gulp.task('index', ['jsHint', 'scripts'], function() {
     .pipe(plugins.if(build,
       _inject(gulp.src('scripts/app*.js', { cwd: targetDir }), 'app'),
       _inject(_getAllScriptSources(), 'app')
-    
     ))
 
     .pipe(gulp.dest(targetDir))
