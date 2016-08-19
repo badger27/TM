@@ -6,10 +6,15 @@
  * @description
  * # HomeController
  */
-angular.module('IonicGulpSeed')
-    .controller('HomeController', function($scope, ExampleService) {
+
+  tm.controller('HomeController', function($scope, $firebaseArray, ExampleService, FIREBASE_URL) {
+        
+     
+       
+//       var ref = new Firebase("https://ticketmaster-5f33e.firebaseio.com");
 
         $scope.myHTML = null;
+
 
          $scope.test = "test";
 
@@ -22,6 +27,11 @@ angular.module('IonicGulpSeed')
                     $scope.$broadcast('scroll.refreshComplete');
                 });
         };
-
         $scope.fetchRandomText();
+        
+          var ref = new Firebase(FIREBASE_URL);
+       
+       $scope.messages = $firebaseArray(ref);
     });
+
+

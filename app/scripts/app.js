@@ -8,11 +8,21 @@
  *
  * Main module of the application.
  */
+	var config = {
+    apiKey: "AIzaSyA8KIbTUXW57Fg6_y1ptYR6M6sebj5kEuM",
+    authDomain: "project-6570233619858853741.firebaseapp.com",
+    databaseURL: "https://project-6570233619858853741.firebaseio.com",
+    storageBucket: "project-6570233619858853741.appspot.com",
+  };
+    firebase.initializeApp(config);
 
+var tm = angular.module('IonicGulpSeed', ['ionic', 'ngCordova', 'ngResource', 'ngSanitize', 'firebase']);
 
-var tm = angular.module('IonicGulpSeed', ['ionic', 'ngCordova', 'ngResource', 'ngSanitize','firebase']);
+     
 
-        tm.constant('FIREBASE_URL', 'https://ticketmaster-5f33e.firebaseio.com') 
+tm.constant('FIREBASE_URL', 'https://ticketmaster-5f33e.firebaseio.com') 
+       
+       
         
         .run(function($ionicPlatform) {
 

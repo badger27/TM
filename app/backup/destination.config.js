@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('inflight.destination', [
-        'inflight.destination.ticketmaster'
+//        'inflight.destination.ticketmaster'
 //        'inflight.destination.cityhook',
 //        'inflight.destination.cityguide',
 //        // 'likewhere.destinations',

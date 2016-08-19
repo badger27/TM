@@ -6,12 +6,20 @@
  * @description
  * # HomeController
  */
-angular.module('IonicGulpSeed')
-    .controller('HomeController', function($scope, ExampleService) {
+
+  tm.controller('HomeController', ['$scope','$location','$firebaseAuth', '$firebaseObject', '$firebaseArray', 'ExampleService',
+      function($scope,$location,$firebaseAuth,$firebaseObject, $firebaseArray,ExampleService) {
+
+        
+     
+    
+   console.log($firebaseArray); // <- verified here that the injection works
+    var rootRef = firebase.database().ref();
+           
+
+     
 
         $scope.myHTML = null;
-
-         $scope.test = "test";
 
         $scope.fetchRandomText = function() {
             ExampleService.doSomethingAsync()
@@ -22,6 +30,11 @@ angular.module('IonicGulpSeed')
                     $scope.$broadcast('scroll.refreshComplete');
                 });
         };
-
         $scope.fetchRandomText();
-    });
+        
+//          var ref = new Firebase(FIREBASE_URL);
+       
+//       $scope.messages = $firebaseArray(ref);
+    }]);
+
+

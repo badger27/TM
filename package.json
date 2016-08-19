@@ -4,6 +4,7 @@
   "description": "A blank seed project for rapid development of Ionic projects through gulp workflows",
   "author": "Thomas Maximini <tmaximini@gmail.com>",
   "dependencies": {
+    "angularfire": "^2.0.1",
     "bluebird": "^3.0.5",
     "firebase": "^3.3.0",
     "gulp-bower-files": "^0.2.7",
